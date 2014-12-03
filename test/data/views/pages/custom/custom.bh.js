@@ -14,8 +14,8 @@ function dropRequireCache(requireFunc, filename) {
         delete requireFunc.cache[filename];
     }
 }
-dropRequireCache(require, require.resolve('../../../../../../bh/lib/bh.js'));
-var BH = require('../../../../../../bh/lib/bh.js');
+dropRequireCache(require, require.resolve('../../../../../node_modules/bh/lib/bh.js'));
+var BH = require('../../../../../node_modules/bh/lib/bh.js');
 var bh = new BH();
 bh.setOptions({
 jsAttrName: 'data-bem',
