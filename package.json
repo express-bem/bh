@@ -1,0 +1,45 @@
+{
+  "name": "express-bem-bh",
+  "version": "0.0.1",
+  "description": "bh.js engine for express-bem",
+  "main": "lib/index.js",
+  "scripts": {
+    "lint": "jshint lib test && jscs lib test",
+    "test": "npm run lint && mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zxqfox/express-bem-bh.git"
+  },
+  "keywords": [
+    "express",
+    "express-bem",
+    "bh",
+    "engine"
+  ],
+  "author": "Alexej Yaroshevich <zxqfox@gmail.com> (http://github.com/zxqfox)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zxqfox/express-bem-bh/issues"
+  },
+  "homepage": "https://github.com/zxqfox/express-bem-bh",
+  "peerDependencies": {
+    "bh": ">=3.2.2",
+    "enb": ">=0.13.9",
+    "express-bem": ">= 0.2.0"
+  },
+  "devDependencies": {
+    "bh": "^3.2.2",
+    "enb": "^0.13.9",
+    "express": ">= 3.0",
+    "express-bem": ">= 0.2.0",
+    "jscs": "^1.5.9",
+    "jshint": "^2.5.4",
+    "mocha": "*",
+    "request": "*"
+  },
+  "files": [
+    "lib",
+    "LICENSE"
+  ]
+}
