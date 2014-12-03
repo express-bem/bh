@@ -1,6 +1,6 @@
 # express-bem-bh
 
-[![Build Status](https://travis-ci.org/zxqfox/express-bem-bh.svg)](https://travis-ci.org/zxqfox/express-bem-bh) [![Dependency Status](https://david-dm.org/zxqfox/express-bem-bh.png)](https://david-dm.org/zxqfox/express-bem-bh)
+[![Build Status](https://travis-ci.org/express-bem/bh.svg)](https://travis-ci.org/express-bem/bh) [![Dependency Status](https://david-dm.org/express-bem/bh.png)](https://david-dm.org/express-bem/bh)
 
 [bh.js][] engine (plugin) for [express-bem][]
 
@@ -34,4 +34,4 @@ bem.usePlugin('express-bem-bh');
 
 MIT [License][]
 
-[License]: https://github.com/zxqfox/express-bem/blob/master/LICENSE
+[License]: https://github.com/express-bem/bh/blob/master/LICENSE
