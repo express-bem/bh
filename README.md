@@ -1,4 +1,4 @@
-# express-bem-bemhtml
+# express-bem-bh
 
 [![Build Status](https://travis-ci.org/zxqfox/express-bem-bh.svg)](https://travis-ci.org/zxqfox/express-bem-bh) [![Dependency Status](https://david-dm.org/zxqfox/express-bem-bh.png)](https://david-dm.org/zxqfox/express-bem-bh)
 
