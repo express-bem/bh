@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zxqfox/express-bem-bh.git"
+    "url": "https://github.com/express/bem-bh.git"
   },
   "keywords": [
     "express",
@@ -20,9 +20,9 @@
   "author": "Alexej Yaroshevich <zxqfox@gmail.com> (http://github.com/zxqfox)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zxqfox/express-bem-bh/issues"
+    "url": "https://github.com/express-bem/bh/issues"
   },
-  "homepage": "https://github.com/zxqfox/express-bem-bh",
+  "homepage": "https://github.com/express-bem/bh",
   "peerDependencies": {
     "bh": ">=3.2.2",
     "enb": ">=0.13.9",
