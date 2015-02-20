@@ -23,13 +23,8 @@
     "url": "https://github.com/express-bem/bh/issues"
   },
   "homepage": "https://github.com/express-bem/bh",
-  "peerDependencies": {
-    "bh": ">=3.2.2",
-    "enb": ">=0.13.9",
-    "express-bem": ">= 0.2.0"
-  },
   "devDependencies": {
-    "bh": "^3.2.2",
+    "bh": "^3.3.0",
     "enb": "^0.13.9",
     "express": ">= 3.0",
     "express-bem": ">= 1.0.0",
