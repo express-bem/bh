@@ -8,13 +8,17 @@ describe('basic renders', function () {
         root: 'test/data/views',
         path: 'pages'
     };
-    var bemjson = {
-        block: 'page',
-        title: 'Example',
-        content: 'Hey ho let\'s go!'
-    };
+    var content = 'Hey ho let\'s go!';
+    var bemjson;
+    beforeEach(function () {
+        bemjson = {
+            block: 'page',
+            title: 'Example',
+            content: content
+        };
+    });
 
-    it('should generate html page with bh.js', function (done) {
+    it('should generate html page with bh.js engine', function (done) {
         var app = EXPRESS();
         var bem = EXPRESSBEM(bemOpts).bindTo(app);
         bem.usePlugin(EXPRESSBH);
@@ -22,9 +26,22 @@ describe('basic renders', function () {
         app.render('custom', {bemjson: bemjson}, function (err, html) {
             ASSERT.ifError(err);
             ASSERT.notEqual(html.indexOf('<!DOCTYPE'), -1);
-            ASSERT.notEqual(html.indexOf(bemjson.content), -1);
+            ASSERT.notEqual(html.indexOf(content), -1);
             done();
         });
     });
 
+    it('should generate html page with source _?.bh.js', function (done) {
+        var app = EXPRESS();
+        var bem = EXPRESSBEM(bemOpts).bindTo(app);
+        bem.usePlugin(EXPRESSBH, {source: '_?.bh.js'});
+
+        app.render('custom', {bemjson: bemjson}, function (err, html) {
+            ASSERT.ifError(err);
+            ASSERT.notEqual(html.indexOf('<!DOCTYPE'), -1);
+            ASSERT.notEqual(html.indexOf(content), -1);
+            ASSERT.notEqual(html.indexOf('minified!'), -1);
+            done();
+        });
+    });
 });

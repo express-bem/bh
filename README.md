@@ -27,7 +27,7 @@ var app = Express();
 var bem = ExpressBem({root: './path-to/bem-project'}).bindTo(app);
 
 // simple
-bem.usePlugin('express-bem-bh');
+bem.usePlugin('express-bem-bh', {force: true, source: '_?.bh.js'});
 ```
 
 ## License
