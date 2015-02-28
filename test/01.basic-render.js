@@ -49,7 +49,7 @@ describe('basic renders', function () {
     it('should pass data to templates', function (done) {
         var app = EXPRESS();
         var bem = EXPRESSBEM(bemOpts).bindTo(app);
-        bem.usePlugin(EXPRESSBH);
+        bem.usePlugin(EXPRESSBH, {dataKey: 'data'});
 
         app.render('use-data', {bemjson: bemjson, foo: 'bar'}, function (err, html) {
             ASSERT.notEqual(html.indexOf('bar'), -1);
