@@ -20,14 +20,29 @@ $ npm i express-bem-bh --save
 ## Usage
 
 ```js
-var Express = require('express');
-var ExpressBem = require('express-bem');
+var express = require('express');
+var expressBem = require('express-bem')(/*params*/); // see the `express-bem` documentation to learn more about params
 
-var app = Express();
-var bem = ExpressBem({root: './path-to/bem-project'}).bindTo(app);
+var app = express();
 
-// simple
-bem.usePlugin('express-bem-bh', {force: true, source: '_?.bh.js'});
+expressBem.bindTo(app);
+expressBem.usePlugin('express-bem-bh', {
+    force: true, // drops the template requiring cache for every request, it makes reason to use in development environment
+    source: '_?.bh.js', // the enb-style wildcard to specify a template name (for example, it will render _index.bh.js for the index page)
+    dataKey: 'data' // name of the field that will contain data into templates, see how to use below
+});
+
+app.get('/', function (req, res) {
+    res.locals.bemjson = {block: 'test'};
+
+    // any data to use into templates
+    // it will be available in templates as `ctx.json().data.message`
+    res.locals.message = 'Use bh with your Express application';
+
+    res.render('pageName');
+});
+
+app.listen(3000);
 ```
 
 ## License
