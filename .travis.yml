@@ -9,3 +9,12 @@ node_js:
 after_success:
   - npm i coveralls
   - cat ./coverage/lcov.info | coveralls
+
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/72c3b0083302b81e4aaf # /chat
+      - https://webhooks.gitter.im/e/3fc624744547d5883c8c
+    on_success: change
+    on_failure: always
+    on_start: false

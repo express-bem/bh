@@ -1,5 +1,6 @@
 # express-bem-bh
 
+[![Gitter](https://badges.gitter.im/express-bem/chat.svg)](https://gitter.im/express-bem/chat)
 [![Build Status](https://travis-ci.org/express-bem/bh.svg)](https://travis-ci.org/express-bem/bh)
 [![Coverage Status](https://coveralls.io/repos/express-bem/bh/badge.svg)](https://coveralls.io/r/express-bem/bh)
 [![Dependency Status](https://david-dm.org/express-bem/bh.png)](https://david-dm.org/express-bem/bh)
