@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "lint": "jshint lib test && jscs lib test",
-    "coverage": "istanbul cover _mocha -- -u bdd -R dot --recursive test",
+    "coverage": "istanbul cover _mocha -- -R dot test",
     "test": "npm run lint && mocha && npm run coverage"
   },
   "repository": {

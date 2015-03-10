@@ -1,30 +1,45 @@
 var assert = require('assert');
 var path = require('path');
-var expressBhEngine = require('../lib/engines/bh');
 var fs = require('fs');
 
-var bemjson = {
-    block: 'page',
-    title: 'Example'
+var expressBhEngine = require('../lib/engines/bh');
+
+var bemjson = function () {
+    return {
+        block: 'page',
+        title: 'Example'
+    };
 };
+var BH = [
+    '(function(){',
+        'var bhModule = {exports:{}};',
+        '(function(module, exports, require){',
+            fs.readFileSync('./node_modules/bh/lib/bh.js'),
+        '}(bhModule, bhModule.exports));',
+        'return bhModule.exports;',
+    '}())'
+].join('');
 var bundlePath = path.join(__dirname, 'data/views/pages/cache');
 var filePath = path.join(bundlePath, 'cache.bh.js');
+var emptyTemplate = [
+    'var BH = ' + BH + ';',
+    'var bh = module.exports = new BH();'
+].join('\n');
 var templateContent = [
-'var BH = require(\'../../../../../node_modules/bh/lib/bh.js\');',
-'var bh = new BH();',
-'bh.match(\'page\', function (ctx) {',
-'    ctx.content(ctx.json().title);',
-'});',
-'module.exports = bh;'
+    emptyTemplate,
+    'bh.match(\'page\', function (ctx) {',
+    '    ctx.content(ctx.json().title);',
+    '});'
 ].join('\n');
 
 describe('cache', function () {
 
     beforeEach(function () {
+        fs.truncateSync(filePath, 0);
         fs.appendFileSync(filePath, templateContent);
     });
 
-    afterEach(function () {
+    after(function () {
         fs.truncateSync(filePath, 0);
     });
 
@@ -34,14 +49,16 @@ describe('cache', function () {
             ext: 'bh.js'
         });
 
-        engine(bundlePath, {bemjson: bemjson}, function (err, html) {
+        engine(bundlePath, {bemjson: bemjson()}, function (err, html) {
             var cachedHtml = html;
 
             assert.ifError(err);
 
             fs.truncateSync(filePath, 0);
 
-            engine(bundlePath, {bemjson: bemjson}, function (err, html) {
+            engine(bundlePath, {bemjson: bemjson()}, function (err, html) {
+                assert.ifError(err);
+
                 assert.equal(cachedHtml, html);
 
                 done();
@@ -57,15 +74,16 @@ describe('cache', function () {
             ext: 'bh.js'
         });
 
-        engine(bundlePath, {bemjson: bemjson}, function (err, html) {
-            var cachedHtml = html;
-
+        engine(bundlePath, {bemjson: bemjson()}, function (err, cachedHtml) {
             assert.ifError(err);
 
             fs.truncateSync(filePath, 0);
+            fs.appendFileSync(filePath, emptyTemplate);
 
-            engine(bundlePath, {bemjson: bemjson}, function (err, html) {
-                assert.notEqual(cachedHtml, html);
+            engine(bundlePath, {bemjson: bemjson()}, function (err, html) {
+                assert.ifError(err);
+
+                assert.notEqual(html, cachedHtml);
 
                 done();
             });
