@@ -4,7 +4,7 @@ var fs = require('fs');
 
 var expressBhEngine = require('../lib/engines/bh');
 
-var bemjson = function () {
+var getBemjson = function () {
     return {
         block: 'page',
         title: 'Example'
@@ -49,14 +49,14 @@ describe('cache', function () {
             ext: 'bh.js'
         });
 
-        engine(bundlePath, {bemjson: bemjson()}, function (err, html) {
+        engine(bundlePath, {bemjson: getBemjson()}, function (err, html) {
             var cachedHtml = html;
 
             assert.ifError(err);
 
             fs.truncateSync(filePath, 0);
 
-            engine(bundlePath, {bemjson: bemjson()}, function (err, html) {
+            engine(bundlePath, {bemjson: getBemjson()}, function (err, html) {
                 assert.ifError(err);
 
                 assert.equal(cachedHtml, html);
@@ -74,13 +74,13 @@ describe('cache', function () {
             ext: 'bh.js'
         });
 
-        engine(bundlePath, {bemjson: bemjson()}, function (err, cachedHtml) {
+        engine(bundlePath, {bemjson: getBemjson()}, function (err, cachedHtml) {
             assert.ifError(err);
 
             fs.truncateSync(filePath, 0);
             fs.appendFileSync(filePath, emptyTemplate);
 
-            engine(bundlePath, {bemjson: bemjson()}, function (err, html) {
+            engine(bundlePath, {bemjson: getBemjson()}, function (err, html) {
                 assert.ifError(err);
 
                 assert.notEqual(html, cachedHtml);
