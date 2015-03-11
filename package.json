@@ -32,8 +32,7 @@
     "jscs": "^1.5.9",
     "jshint": "^2.5.4",
     "mocha": "*",
-    "istanbul": "0.3.5",
-    "request": "*"
+    "istanbul": "0.3.5"
   },
   "files": [
     "lib",
