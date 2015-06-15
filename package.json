@@ -1,6 +1,6 @@
 {
   "name": "express-bem-bh",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "bh.js engine for express-bem",
   "main": "lib/index.js",
   "scripts": {
